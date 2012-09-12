@@ -1,19 +1,27 @@
 require_relative '../../lib/fib'
 
 describe Fib do
-  describe 'with 4 rows' do
-    it 'includes 1 for the first row' do
-      subject.rows[0].should == [1]
-    end
+  it 'has a first value of 1' do
+    subject.values[0].should == 1
+  end
 
-    it 'includes 1,1 for the second row'
+  it 'has a 2nd value of 2' do
+    subject.values[1].should == 2
+  end
 
-    it 'includes 1,2,1 for the third row'
+  it 'has a 3rd value of 3' do
+    subject.values[2].should == 3
+  end
 
-    it 'includes 1,3,3,1 for the fourth row'
+  it 'has a 4th value of 5' do
+    subject.values[3].should == 5
+  end
 
-    it 'includes 1,4,6,4,1 for the fifth row'
+  it 'has a 5th value of 8' do
+    subject.values[4].should == 8
+  end
 
-    it 'includes 1,5,10,10,5,1 for the sixth row'
+  it 'has a 6th value of 13' do
+    subject.values[5].should == 13
   end
 end

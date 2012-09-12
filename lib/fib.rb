@@ -1,9 +1,15 @@
 class Fib
-  def rows
-    [row(nil)]
-  end
-
-  def row(previous_row)
-    return [1] if previous_row.nil?
+  def values
+    @values = []
+    6.times do |i|
+      if @values.empty?
+        @values << 1
+      elsif @values.size == 1
+        @values << 2
+      else
+        @values << @values[i-2] + @values[i-1]
+      end
+    end
+    @values
   end
 end
