@@ -20,7 +20,6 @@ describe Matrix do
   end
 
   it 'can find the sum of a specific region' do
-    pending
     subject.sum_of_region({ x: 3, y: 4 }, { x: 10, y: 8}).should == 3760
   end
 end
