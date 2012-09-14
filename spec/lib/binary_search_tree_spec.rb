@@ -1,5 +1,4 @@
 require_relative '../../lib/binary_search_tree'
-require 'debugger'
 
 describe BinarySearchTree do
   let(:subject) { described_class.new(root_node) }
