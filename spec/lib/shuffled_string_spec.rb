@@ -8,10 +8,10 @@ describe ShuffledString do
   let(:shuffled_string) { 'asadwefr' }
 
   it 'can detect if the string has been shuffled by a given set of strings' do
-    str3 = 'qwir'
-    str4 = 'awera'
     subject.shuffled_from?(str1, str2).should be_true
-    subject.shuffled_from?(str1, str3).should be_false
-    subject.shuffled_from?(str1, str4).should be_false
+    subject.shuffled_from?(str1, 'qwir').should be_false
+    subject.shuffled_from?(str1, 'awera').should be_false
+    subject.shuffled_from?(str1, 'aw', 'er').should be_true
+    subject.shuffled_from?(str1, 'aw', 'aer').should be_false
   end
 end

@@ -1,31 +1,34 @@
 class ShuffledString
-  attr_reader :str
+  attr_reader :string
 
   def initialize(str)
-    @str = str
+    @string = str
   end
 
-  def shuffled_from?(str1, str2)
-    str_match = str
+  def shuffled_from?(*strs)
+    str_match = string
 
     # return true if boths string combined directly is a match
-    return true if str_match == str1+str2 || str_match == str2+str1
+    return true if str_match == strs.join("")
 
     # remove the full string for each if it is found
-    str1 = '' if str_match.gsub!(str1, '')
-    str2 = '' if str_match.gsub!(str2, '')
+    strs.each do |str|
+      str = '' if str_match.gsub!(str, '')
+    end
 
     # all other chars remaining check order for remaining source string chars
     str_match.each_char do |char|
-      if str1[0] == char 
-        str1 = str1.length == 1 ? "" : str1[1..-1]
-      elsif str2[0] == char
-        str2 = str2.length == 1 ? "" : str2[1..-1]
-      else
-        return false
+      matched = false
+      strs.each_with_index do |str, i|
+        if str[0] == char
+          strs[i] = str.length == 1 ? "" : str[1..-1]
+          matched = true
+          break
+        end
       end
+      return false if !matched
     end
 
-    str1.empty? && str2.empty?
+    strs.all?(&:empty?)
   end
 end
