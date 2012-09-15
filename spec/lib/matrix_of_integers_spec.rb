@@ -1,6 +1,6 @@
-require_relative '../../lib/matrix'
+require_relative '../../lib/matrix_of_integers'
 
-describe Matrix do
+describe MatrixOfIntegers do
   subject { described_class.new(data) }
 
   let(:data) do
@@ -21,5 +21,15 @@ describe Matrix do
 
   it 'can find the sum of a specific region' do
     subject.sum_of_region({ x: 3, y: 4 }, { x: 10, y: 8}).should == 3760
+  end
+
+  it 'can find the sum of any region' do
+    subject.cache_all_sums
+
+    subject.sum_of_region({x: 3, y: 4 }, { x: 10, y: 8}).should == 3760
+    subject.sum_of_region({x: 2, y: 3 }, { x: 4, y: 9 }).should == 1263
+    subject.sum_of_region({x: 1, y: 1 }, { x: 1, y: 9 }).should == 45
+    subject.sum_of_region({x: 1, y: 1 }, { x: 9, y: 1 }).should == 45
+    subject.sum_of_region({x: 1, y: 1 }, { x: 16, y: 11 }).should == 38751
   end
 end
