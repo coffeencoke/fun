@@ -1,3 +1,8 @@
+#
+# Binary Search Tree
+#
+# Check if the given root node is a valid binary search tree
+#
 class BinarySearchTree
   attr_reader :root
 

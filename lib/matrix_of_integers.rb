@@ -1,5 +1,10 @@
 require 'matrix'
 
+#
+# Matrix of integers.
+#
+# View the specs for this class for more info
+#
 class MatrixOfIntegers
   attr_reader :data, :full_boundary, :cache_of_sums
 
