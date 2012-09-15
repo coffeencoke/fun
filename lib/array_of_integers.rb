@@ -16,4 +16,15 @@ class ArrayOfIntegers
 
     max
   end
+  
+  def missing_int(source_array)
+    missing = 0
+    source_array.each do |i|
+      missing ^= i
+    end
+    integers.each do |i|
+      missing ^= i
+    end
+    missing
+  end
 end
