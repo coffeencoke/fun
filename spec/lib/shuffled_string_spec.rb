@@ -9,6 +9,8 @@ describe ShuffledString do
 
   it 'can detect if the string has been shuffled by a given set of strings' do
     subject.shuffled_from?(str1, str2).should be_true
+    subject.shuffled_from?('as', 'ad', 'we', 'fr').should be_true
+    subject.shuffled_from?('asa', 'dwef', 'r').should be_true
     subject.shuffled_from?(str1, 'qwir').should be_false
     subject.shuffled_from?(str1, 'awera').should be_false
     subject.shuffled_from?(str1, 'aw', 'er').should be_true

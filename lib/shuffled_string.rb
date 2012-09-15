@@ -12,8 +12,8 @@ class ShuffledString
     return true if str_match == strs.join("")
 
     # remove the full string for each if it is found
-    strs.each do |str|
-      str = '' if str_match.gsub!(str, '')
+    strs.each_with_index do |str, i|
+      strs[i] = '' if str_match.gsub!(str, '')
     end
 
     # all other chars remaining check order for remaining source string chars
