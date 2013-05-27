@@ -1,6 +1,6 @@
 # Fun
 
-Simple idea.  Have fun with algorithms, patterns, data containers, etc.  
+Simple idea.  Have fun with algorithms, patterns, data structures, etc.  
 
 ## The idea of this repo is to…
 
@@ -8,7 +8,7 @@ Simple idea.  Have fun with algorithms, patterns, data containers, etc.
 
 * **tweak design patterns**
 
-* **explore the usefulness and purposes of data types**
+* **explore the usefulness and purposes of data structures**
 
 ## Contribute / Collaborate
 
@@ -21,3 +21,9 @@ Also, I would love to hear how you might do something a different way and why.
 * Fibonacci Sequence
 * Finding the sum of a region in an integer matrix
 * Determine if a given dataset is a valid binary search tree
+* Fun things to do with arrays of integers
+    * sorting
+    * finding a missing value from two sets
+    * finding the largest continuous sum
+* Determines if a given string has balanced parenthesis or not
+* Shuffling
