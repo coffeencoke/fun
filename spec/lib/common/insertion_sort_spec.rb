@@ -9,9 +9,7 @@ module Common
         let(:expected_sort) { n.sort }
         let(:numbers) { n }
 
-        it "sorts the numbers correctly" do
-          subject.should == expected_sort
-        end
+        it { should == expected_sort }
       end
     end
   end
