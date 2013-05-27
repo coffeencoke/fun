@@ -1,43 +1,34 @@
 class QuickSort
-  attr_accessor :array
+  attr_reader :array
 
   def initialize(array)
-    self.array = array
+    @array = array
   end
 
   def call
-    quick_sort(1, array.size - 1)
-    array
+    sort(array)
+  end
+
+  def sort(sub_array)
+    sub_array.length <= 1 ? sub_array : quick_sort(sub_array)
   end
 
   private
 
-  def quick_sort(left, right)
-    if left < right
-      pivot_index = left + 1
-      new_pivot_index = partition(left, right, pivot_index)
-      quick_sort(left, new_pivot_index - 1)
-      quick_sort(new_pivot_index + 1, right)
-    end
-  end
+  def quick_sort(sub_array)
+    pivot = sub_array.pop
 
-  def partition(left, right, pivot_index)
-    pivot_value = array[pivot_index]
-    right_value = array[right]
-    array[right] = pivot_value
-    array[pivot_index] = right_value
+    less = []
+    greater = []
 
-    store_index = left
-    (left..right-1).each do |i|
-      i_val = array[i]
-      if i_val < pivot_value
-        array[i] = array[store_index]
-        store_index += 1
+    sub_array.each do |x|
+      if x <= pivot
+        less << x
+      else
+        greater << x
       end
     end
 
-    array[store_index] = array[right]
-
-    store_index
+    sort(less) + [pivot] + sort(greater)
   end
 end
