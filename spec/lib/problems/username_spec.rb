@@ -17,13 +17,6 @@ module Problems
           ["MasterOfDisaster", "TygerTyger1", "DingBat", "Orpheus", "TygerTyger", "WolfMan", "MrKnowItAll"],
           "TygerTyger"
         ],
-        output: %(TygerTyger)
-      },
-      {
-        input: [
-          ["TygerTyger2000", "TygerTyger1", "MasterDisaster", "DingBat", "Orpheus", "WolfMan", "MrKnowItAll"],
-          "TygerTyger"
-        ],
         output: %(TygerTyger2)
       },
       {
@@ -50,7 +43,7 @@ module Problems
     ]
 
     ins_and_outs.each do |in_and_out|
-      pending "input of #{in_and_out[:input]}" do
+      describe "input of #{in_and_out[:input]}" do
         let(:existing_names) { in_and_out[:input][0] }
         let(:new_name) { in_and_out[:input][1] }
 
