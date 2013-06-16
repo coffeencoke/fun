@@ -7,7 +7,7 @@ module Common
     end
 
     def call
-      array
+      
     end
   end
 end
