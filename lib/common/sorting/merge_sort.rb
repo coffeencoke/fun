@@ -1,4 +1,11 @@
 module Common
+  # Time Complexity
+  #   Worst: O(n lg(n))
+  #   Best: O(n lg(n))
+  # 
+  # Space Complexity
+  #   Worst: O(n)
+  #
   class MergeSort
     attr_reader :array
 
