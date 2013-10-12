@@ -4,23 +4,18 @@ module Problems
     def self.new_member(existing_names, new_name)
       number = 0
       name = new_name
+      found = true
+      i = 0
 
-      matches = []
-      name_size = new_name.size
-
-      existing_names.each do |existing_name|
-        if existing_name[0..name_size-1] == name
-          matches << existing_name
-        end
-      end
-
-      matches.size.times do
-        matches.each do |match|
-          if match == name
-            number += 1
-            name = "#{new_name}#{number}"
-            break
-          end
+      while found do
+        if existing_names[i] == name
+          number += 1
+          i = 0
+          name = "#{new_name}#{number}"
+        elsif i == existing_names.size-1
+          found = false
+        else
+          i += 1
         end
       end
 
