@@ -40,13 +40,22 @@ describe Poetry do
       return_value: %(    )
     },
     {
-      args: ["This poem has uppercase letters",
- "In its rhyme scheme",
- "Alpha", "Blaster", "Cat", "Desert", "Elephant", "Frog", "Gulch", 
- "Horse", "Ireland", "Jam", "Krispy Kreme", "Loofah", "Moo", "Narf",
- "Old", "Pink", "Quash", "Rainbow", "Star", "Tour", "Uvula", "Very",
- "Will", "Xmas", "Young", "Zed", "deception", "comic", "grout",
- "oval", "cable", "rob", "steal", "steel", "weak"],
+      pending: true,
+      args: [
+        "This poem has uppercase letters", # a
+        "In its rhyme scheme", # b
+        "Alpha", # c
+        "Blaster", # d
+        "Cat", # e
+        "Desert", # f
+        "Elephant", # g
+        "Frog", # h
+        "Gulch", # i
+        "Horse", # j  => this should be a b, but it is failing
+        "Ireland", # k
+        "Jam",
+        "Krispy Kreme", 
+        "Loofah", "Moo", "Narf", "Old", "Pink", "Quash", "Rainbow", "Star", "Tour", "Uvula", "Very", "Will", "Xmas", "Young", "Zed", "deception", "comic", "grout", "oval", "cable", "rob", "steal", "steel", "weak"],
       return_value: %(abcdefghibjkblmnopqrstcuvwxyzABCbDEFG)
     },
     {
@@ -79,12 +88,13 @@ describe Poetry do
 
   examples.each_with_index do |example, index|
     describe "Example ##{index+1}: args: #{example[:args].inspect}" do
-      pending 'missing one case' do
       let(:args) { example[:args] }
       let(:return_value) { example[:return_value] }
 
-      it { should == return_value }
-    end
+      it do 
+        pending 'have not figured this one out yet :(' if example[:pending]
+        should == return_value
+      end
     end
   end
 end

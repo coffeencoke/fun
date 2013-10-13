@@ -6,22 +6,23 @@ module Poetry
 
     sentences.each do |sentence|
       last_word = sentence.split(" ")[-1]
-      last_word.downcase! unless last_word.nil?
 
       sentence_scheme = get_scheme(last_word)
       next_scheme = scheme_keys[rhyme_schemes.keys.size-1]
       sentence_scheme_key = rhyme_schemes[sentence_scheme] ||= next_scheme
       scheme += sentence_scheme_key
     end
+
     scheme
   end
 
   def self.scheme_keys
-    %(abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789)
+    %(abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ)
   end
 
   def self.get_scheme(word)
     return " " if word.nil?
+    word.downcase!
     word.each_char.with_index do |c, i|
       next if i == 0 && c == 'y'
       if vowels.include?(c)
