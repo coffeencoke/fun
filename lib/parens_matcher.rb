@@ -1,26 +1,19 @@
 class ParensMatcher
   def initialize(str)
     @str = str
-    @balanced = true
-    @number_of_opened_parens = 0
   end
 
   def balanced?
-    if parens.first == ')' || parens.last == '('
-      @balanced = false
-    end
+    parens_stack = []
 
-    if @balanced
-      parens.each_with_index do |paren, i|
-        paren == '(' ? @number_of_opened_parens += 1 : @number_of_opened_parens -= 1
+    parens.each do |p|
+      if p == "("
+        parens_stack << p
+      elsif p == ")" && parens_stack.pop != "("
+        return false
       end
     end
-
-    @balanced && @number_of_opened_parens == 0
-  end
-
-  def checking_if_balanced?
-    @balanced == true || @complete == false
+    parens_stack.empty?
   end
 
   def parens
