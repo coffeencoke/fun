@@ -15,7 +15,10 @@ class ParkingGarage
   end
 
   def occupy(space)
-    occupied_spaces[space] = true unless occupied?(space)
+    unless occupied?(space)
+      occupied_spaces[space] = true
+      open_spaces.shift
+    end
   end
 
   def occupied?(space)

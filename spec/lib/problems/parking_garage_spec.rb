@@ -24,5 +24,7 @@ describe ParkingGarage do
     it 'cannot occupy an already occupied space' do
       subject.occupy(1).should be_false
     end
+
+    its(:space_to_occupy) { should == 2 }
   end
 end
