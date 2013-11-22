@@ -12,4 +12,8 @@ class MinPriorityQueue
   def peak
     @root.value if @root
   end
+
+  def pop
+    peak.tap { @root = nil }
+  end
 end
