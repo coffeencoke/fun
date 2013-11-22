@@ -1,6 +1,12 @@
 class MinPriorityQueue
   Node = Struct.new :value, :next, :parent
 
+  def initialize(ary=[])
+    ary.each do |a|
+      add a
+    end
+  end
+
   def empty?
     true
   end

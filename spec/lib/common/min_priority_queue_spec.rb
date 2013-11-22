@@ -35,12 +35,7 @@ describe MinPriorityQueue do
   end
 
   context 'when multiple nodes are added' do
-    before do
-      subject.add 5
-      subject.add 1
-      subject.add 6
-      subject.add 2
-    end
+    subject { described_class.new([5,1,6,2]) }
 
     it 'prioritizes the queue in minimum order' do
       subject.peak.should == 1
