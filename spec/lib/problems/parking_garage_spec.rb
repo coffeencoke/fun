@@ -4,17 +4,25 @@ describe ParkingGarage do
   subject { ParkingGarage.new(parking_spots) }
 
   let(:parking_spots) do
-    [
-      ParkingSpot.new(1),
-      ParkingSpot.new(2),
-      ParkingSpot.new(3),
-      ParkingSpot.new(4),
-      ParkingSpot.new(5)
-    ]
+    [1,2,3,4,5]
   end
+
   context 'when no cars have been parked' do
-    it 'gets the first space' do
-      subject.space_to_occupy.should == parking_spots[0]
+    its(:space_to_occupy) { should == 1 }
+    it { should_not be_full }
+  end
+
+  it 'can occupy an open space' do
+    subject.occupy(1).should be_true
+  end
+
+  context 'when the first space is occupied' do
+    before do
+      subject.occupy(1)
+    end
+
+    it 'cannot occupy an already occupied space' do
+      subject.occupy(1).should be_false
     end
   end
 end
