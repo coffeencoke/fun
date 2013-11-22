@@ -36,7 +36,15 @@ describe ParkingGarage do
     end
   end
 
-  context 'when cars have come and gone' do
+  context 'when the first space has been occupied and becomes vacant' do
+    before do
+      subject.occupy 1
+      subject.vacate 1
+    end
 
+    it 'prioritizes the closer space for the next occupant' do
+      pending 'need to make a min priority queue'
+      subject.space_to_occupy.should == 1
+    end
   end
 end
