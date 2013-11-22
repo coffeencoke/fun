@@ -24,8 +24,8 @@ class MinPriorityQueue
             @root = new_node
             the_root.parent = new_node
           else
-            the_root.parent = new_node
             the_root.parent.next = new_node
+            the_root.parent = new_node
           end
           new_node.next = the_root
           break
@@ -39,6 +39,7 @@ class MinPriorityQueue
         end
       end
     end
+    true
   end
 
   def peak
@@ -46,7 +47,13 @@ class MinPriorityQueue
   end
 
   def pop
-    peak.tap { @root = nil }
+    return if empty?
+    peak.tap do
+      @root = @root.next
+      if @root
+        @root.parent = nil
+      end
+    end
   end
 
   def empty?

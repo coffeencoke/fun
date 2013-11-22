@@ -40,5 +40,15 @@ describe MinPriorityQueue do
     it 'prioritizes the queue in minimum order' do
       subject.peak.should == 1
     end
+
+    context 'and the root node is popped' do
+      before do
+        subject.pop
+      end
+
+      it 'replaces the root node with the next minimum value' do
+        subject.peak.should == 2
+      end
+    end
   end
 end
