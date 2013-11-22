@@ -9,7 +9,7 @@ class MinPriorityQueue
     @root = Node.new value
   end
 
-  def root
+  def peak
     @root.value if @root
   end
 end

@@ -7,13 +7,13 @@ describe MinPriorityQueue do
     subject.add(1).should be_true
   end
 
-  its(:root) { should be_nil }
+  its(:peak) { should be_nil }
 
-  context 'when a value is added' do
+  context 'when a node is added' do
     before do
       subject.add(1)
     end
 
-    its(:root) { should == 1 }
+    its(:peak) { should == 1 }
   end
 end
