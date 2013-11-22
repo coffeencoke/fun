@@ -9,6 +9,7 @@ describe MinPriorityQueue do
 
   its(:peak) { should be_nil }
   its(:pop) { should be_nil }
+  it { should be_empty }
 
   context 'when a node is added' do
     before do
@@ -19,6 +20,7 @@ describe MinPriorityQueue do
     it 'can remove the top node' do
       subject.pop.should == 1
     end
+    it { should_not be_empty }
   end
 
   context 'when a node is added and removed' do
@@ -29,6 +31,19 @@ describe MinPriorityQueue do
 
     it 'no longer contains that node' do
       subject.peak.should be_nil
+    end
+  end
+
+  context 'when multiple nodes are added' do
+    before do
+      subject.add 5
+      subject.add 1
+      subject.add 6
+      subject.add 2
+    end
+
+    it 'prioritizes the queue in minimum order' do
+      subject.peak.should == 1
     end
   end
 end
