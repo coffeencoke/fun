@@ -1,30 +1,32 @@
+require_relative '../common/min_priority_queue'
+
 class ParkingGarage
-  attr_reader :open_spaces, :occupied_spaces
+  attr_reader :open_spaces_queue, :occupied_spaces
 
   def initialize(spaces)
-    @open_spaces = spaces
+    @open_spaces_queue = MinPriorityQueue.new(spaces)
     @occupied_spaces = {}
   end
 
   def space_to_occupy
-    open_spaces.first
+    open_spaces_queue.peak
   end
 
   def full?
-    open_spaces.empty?
+    open_spaces_queue.empty?
   end
 
   def occupy(space)
     if vacant? space
       occupied_spaces[space] = true
-      open_spaces.shift
+      open_spaces_queue.pop
     end
   end
 
   def vacate(space)
     if occupied? space
       occupied_spaces.delete space
-      open_spaces.push space
+      open_spaces_queue.add space
     end
   end
 

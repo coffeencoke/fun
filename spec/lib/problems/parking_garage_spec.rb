@@ -43,7 +43,6 @@ describe ParkingGarage do
     end
 
     it 'prioritizes the closer space for the next occupant' do
-      pending 'need to make a min priority queue'
       subject.space_to_occupy.should == 1
     end
   end
