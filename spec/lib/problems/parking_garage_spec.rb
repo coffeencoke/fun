@@ -16,6 +16,10 @@ describe ParkingGarage do
     subject.occupy(1).should be_true
   end
 
+  it 'cannot vacate an open space' do
+    subject.vacate(1).should be_false
+  end
+
   context 'when the first space is occupied' do
     before do
       subject.occupy(1)
@@ -26,5 +30,13 @@ describe ParkingGarage do
     end
 
     its(:space_to_occupy) { should == 2 }
+
+    it 'can vacate a space' do
+      subject.vacate(1).should be_true
+    end
+  end
+
+  context 'when cars have come and gone' do
+
   end
 end
