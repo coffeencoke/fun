@@ -1,36 +1,38 @@
 module WordPuzzle
+  def self.add_word(list, word, y, x)
+    if word
+      list[word] ||= []
+      list[word] << "#{y} #{x}"
+    end
+  end
+
   def self.find_words(grid, word_list)
-#    size = [width, height].max
     width = grid[0].size-1
     height = grid.size-1
+    size = [width, height].max
 
     letters = {}
     0.upto(height) do |y|
       0.upto(width) do |x|
-        width.downto(x) do |x1|
-          word = grid[y][x..x1]
-          letters[word] ||= []
-          letters[word] << "#{y} #{x}"
+        width.downto(x) do |depth|
+          add_word letters, grid[y][x..depth], y, x
         end
 
-        height.downto(y) do |y1|
+        height.downto(y) do |depth|
           horizontal_word = ""
           diagonal_word = ""
-          y1.downto(y) do |y2|
-            horizontal_word = "#{grid[y1][x]}#{horizontal_word}"
-            diagonal_word = "#{grid[y2][x+y2-y]}#{diagonal_word}"
+          depth.downto(y) do |y2|
+            if grid[depth]
+              horizontal_word = "#{grid[depth][x]}#{horizontal_word}"
+              diagonal_word = "#{grid[y2][x+y2-y]}#{diagonal_word}"
+            end
           end
 
-          letters[horizontal_word] ||= []
-          letters[horizontal_word] << "#{y} #{x}"
-          letters[diagonal_word] ||= []
-          letters[diagonal_word] << "#{y} #{x}"
-          p diagonal_word
+          add_word letters, horizontal_word, y, x
+          add_word letters, diagonal_word, y, x
         end
       end
     end
-
-    p letters
 
     coordinates = []
     word_list.each do |word|
@@ -46,6 +48,7 @@ module WordPuzzle
         end
       end
     end
+
     coordinates
   end
 end
