@@ -9,7 +9,6 @@ module WordPuzzle
   def self.find_words(grid, word_list)
     width = grid[0].size-1
     height = grid.size-1
-    size = [width, height].max
 
     letters = {}
     0.upto(height) do |y|
@@ -23,7 +22,7 @@ module WordPuzzle
           diagonal_word = ""
           depth.downto(y) do |y2|
             if grid[depth]
-              horizontal_word = "#{grid[depth][x]}#{horizontal_word}"
+              horizontal_word = "#{grid[y2][x]}#{horizontal_word}"
               diagonal_word = "#{grid[y2][x+y2-y]}#{diagonal_word}"
             end
           end
